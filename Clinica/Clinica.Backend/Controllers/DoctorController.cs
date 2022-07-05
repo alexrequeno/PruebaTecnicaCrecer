@@ -1,6 +1,8 @@
 ﻿using Clinica.DomainLayer.Interfaces;
+using Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Clinica.Backend.Controllers
 {
@@ -15,5 +17,26 @@ namespace Clinica.Backend.Controllers
             _doctorRepository = doctorRepository;
         }
 
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            List<Doctor> dr = _doctorRepository.GetDoctors(0);
+
+            return Ok(dr);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            List<Doctor> dr = _doctorRepository.GetDoctors(id);
+
+            return Ok(dr.Find(d => d.Id == id));
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromBody]Doctor dr)
+        {
+            _doctorRepository.CreateDoctor(dr.Nombre, dr.Apellidos, dr.FechaNac, dr.Especialidad);
+        }
     }
 }

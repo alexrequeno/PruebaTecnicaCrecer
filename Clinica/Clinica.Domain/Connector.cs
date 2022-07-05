@@ -12,7 +12,7 @@ namespace Clinica.DataAccessLayer
 
         protected SqlConnection GetConnection()
         {
-            return new SqlConnection();
+            return new SqlConnection(connectionStr);
         }
     }
 }

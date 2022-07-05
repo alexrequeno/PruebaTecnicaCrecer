@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Clinica.Domain\Clinica.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\Clinica.DAL\Clinica.DomainLayer.csproj" />
   </ItemGroup>
 
 
